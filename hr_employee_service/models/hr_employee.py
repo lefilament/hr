@@ -39,26 +39,22 @@ class HrEmployee(models.Model):
     )
     service_duration = fields.Integer(
         groups="hr.group_hr_user",
-        readonly=True,
         compute="_compute_service_duration",
         help="Service duration in days",
     )
     service_duration_years = fields.Integer(
         string="Service Duration (years)",
         groups="hr.group_hr_user",
-        readonly=True,
         compute="_compute_service_duration_display",
     )
     service_duration_months = fields.Integer(
         string="Service Duration (months)",
         groups="hr.group_hr_user",
-        readonly=True,
         compute="_compute_service_duration_display",
     )
     service_duration_days = fields.Integer(
         string="Service Duration (days)",
         groups="hr.group_hr_user",
-        readonly=True,
         compute="_compute_service_duration_display",
     )
 
