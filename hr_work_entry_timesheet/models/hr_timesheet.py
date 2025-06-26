@@ -10,7 +10,7 @@ class AccountAnalyticLine(models.Model):
 
     def _get_work_entry(self):
         work_entries = self.env["hr.work.entry"]
-        for timesheet in self.filtered(lambda l: not l.project_id and l.employee_id):
+        for timesheet in self.filtered(lambda l: l.project_id and l.employee_id):
             work_entries += work_entries.search(
                 [
                     ("employee_id", "=", timesheet.employee_id.id),
