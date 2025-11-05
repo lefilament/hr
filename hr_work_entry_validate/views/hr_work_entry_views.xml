@@ -12,7 +12,7 @@
                 quick_create="0"
                 color="color"
                 event_limit="5"
-                js_class="validate_work_entries_calendar"
+                js_class="work_entries_calendar"
             >
                 <field name="state" />
             </calendar>
