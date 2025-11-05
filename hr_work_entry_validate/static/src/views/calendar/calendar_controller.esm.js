@@ -1,10 +1,10 @@
-import {registry} from "@web/core/registry";
-import {useService} from "@web/core/utils/hooks";
-import {_t} from "@web/core/l10n/translation";
 import {
     WorkEntryCalendarController,
     WorkEntryCalendarView,
 } from "@hr_work_entry_contract/views/work_entry_calendar/work_entry_calendar_controller";
+import {_t} from "@web/core/l10n/translation";
+import {registry} from "@web/core/registry";
+import {useService} from "@web/core/utils/hooks";
 
 export class ValidateWorkEntryCalendarController extends WorkEntryCalendarController {
     setup() {
@@ -15,12 +15,12 @@ export class ValidateWorkEntryCalendarController extends WorkEntryCalendarContro
 
     // Only display button if month or week
     get displayValidateButton() {
-        return this.model.meta.scale == "week" || this.model.meta.scale == "month";
+        return this.model.meta.scale === "week" || this.model.meta.scale === "month";
     }
 
     // Tell if any record is still draft
     get anyDraft() {
-        return this.filteredRecords.length != 0;
+        return this.filteredRecords.length !== 0;
     }
 
     // Get current draft records
@@ -36,14 +36,14 @@ export class ValidateWorkEntryCalendarController extends WorkEntryCalendarContro
             (record) =>
                 record.start > start &&
                 record.end < end &&
-                record.rawRecord.state == state
+                record.rawRecord.state === state
         );
     }
 
     // Call action_validate on current records
     async validate() {
         const record_ids = this.filteredRecords.map((r) => r.id);
-        console.log("Validating records", record_ids);
+        // Console.log("Validating records", record_ids);
         const success = await this.orm.call("hr.work.entry", "action_validate", [
             record_ids,
         ]);
